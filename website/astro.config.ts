@@ -7,7 +7,7 @@ import icon from 'astro-icon';
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://honours.lbxa.net",
+  site: "https://vla.lbxa.net",
 
   prefetch: {
     prefetchAll: true,
