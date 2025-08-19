@@ -13,7 +13,7 @@ const navItems = [
 ];
 ---
 
-<nav class="fixed inset-x-0 top-0 z-50 border-b border-gray-200 bg-white/80 backdrop-blur-sm">
+<nav class="fixed inset-x-0 top-0 z-50 border-b border-nerfies-gray-200 bg-white/80 backdrop-blur-sm">
   <div class="mx-auto max-w-4xl px-lg py-md">
     <div class="flex items-center justify-between">
       <NavLink href="#hero" class="text-lg font-semibold">
@@ -85,13 +85,13 @@ const navItems = [
       if (entry.isIntersecting) {
         // Remove active class from all nav links
         document.querySelectorAll('nav a').forEach(link => {
-          link.classList.remove('text-blue-600', 'font-medium');
+          link.classList.remove('text-nerfies-primary', 'font-medium');
         });
         
         // Add active class to current section link
         const activeLink = document.querySelector(`nav a[href="#${entry.target.id}"]`);
         if (activeLink) {
-          activeLink.classList.add('text-blue-600', 'font-medium');
+          activeLink.classList.add('text-nerfies-primary', 'font-medium');
         }
       }
     });

@@ -7,7 +7,7 @@ export interface Props {
 
 const { href, mobile = false, class: className = "" } = Astro.props;
 
-const baseClasses = "hover:text-blue-600 transition-colors";
+const baseClasses = "hover:text-nerfies-primary transition-colors duration-200";
 const desktopClasses = mobile ? "" : "";
 const mobileClasses = mobile ? "block py-sm" : "";
 const combinedClasses = `${baseClasses} ${mobile ? mobileClasses : desktopClasses} ${className}`;

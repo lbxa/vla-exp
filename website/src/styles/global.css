@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Google+Sans:wght@300;400;500;600;700&family=Noto+Sans:wght@300;400;500;600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -23,15 +25,42 @@ html.dark .astro-code span {
 
 
 @layer base {
-  /* other classes */
+  /* Set default fonts */
+  html {
+    font-family: 'Noto Sans', system-ui, sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Google Sans', system-ui, sans-serif;
+  }
 
   /* Katex text color */
   .prose .katex-display {
-    @apply text-gray-900;
+    @apply text-nerfies-gray-800;
   }
 
   /* ===== Code Blocks & Syntax Highlighting ===== */
   /* other classes */
+}
+
+@layer components {
+  /* Nerfies-inspired button styles */
+  .btn-nerfies {
+    @apply bg-nerfies-primary hover:bg-nerfies-primary-hover text-white px-6 py-3 rounded shadow-nerfies transition-all duration-200;
+  }
+
+  .btn-nerfies-outline {
+    @apply border-2 border-nerfies-primary text-nerfies-primary hover:bg-nerfies-primary hover:text-white px-6 py-3 rounded transition-all duration-200;
+  }
+
+  /* Nerfies card styles */
+  .card-nerfies {
+    @apply bg-white rounded shadow-nerfies p-6;
+  }
+
+  .card-nerfies-lg {
+    @apply bg-white rounded shadow-nerfies-lg p-8;
+  }
 }
 
 /* Heading anchor styles - global to ensure proper loading */
@@ -84,8 +113,8 @@ section[id] {
 .prose h4::after:hover,
 .prose h5::after:hover,
 .prose h6::after:hover {
-  color: #3B82F6;
-  background-color: #F3F4F6;
+  color: #3273dc;
+  background-color: #f5f5f5;
 }
 
 /* Mobile adjustments */

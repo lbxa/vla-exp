@@ -20,11 +20,18 @@ const { title = "Research Paper", description = "Academic research presentation"
     <meta name="description" content={description} />
     <title>{title}</title>
     
+    <link rel="icon" type="image/png" href="/favicon/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg" />
+    <link rel="shortcut icon" href="/favicon/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="vla-exp" />
+    <link rel="manifest" href="/favicon/site.webmanifest" />
+    
     <!-- KaTeX CSS for math rendering -->
     <link rel="preload" href="https://cdn.jsdelivr.net/npm/katex@0.15.2/dist/katex.min.css" as="style" onload="this.onload=null;this.rel='stylesheet';" />
     <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.2/dist/katex.min.css" /></noscript>
   </head>
-  <body class="bg-white leading-relaxed text-gray-900">
+  <body class="bg-white font-noto-sans leading-relaxed text-nerfies-gray-700">
     <Nav />
 
     <!-- Main content -->
@@ -33,9 +40,14 @@ const { title = "Research Paper", description = "Academic research presentation"
     </main>
 
     <!-- Footer -->
-    <footer class="mt-16 border-t border-gray-200 bg-gray-50">
-      <div class="mx-auto max-w-4xl px-lg py-xl text-center text-sm text-gray-600">
-        <p>© 2024 - Built with <a href="https://astro.build" class="text-blue-600 hover:underline">Astro</a></p>
+    <footer class="mt-16 border-t border-nerfies-gray-200 bg-nerfies-gray-50">
+      <div class="mx-auto max-w-4xl space-y-2 px-lg py-xl text-center text-sm text-nerfies-gray-600">
+        
+        <p>Website template adapted from <a href="https://keunhong.com/" class="text-nerfies-primary transition-colors duration-200 hover:text-nerfies-primary-hover hover:underline">Keunhong Park</a>, <a href="https://mgharbi.com/" class="text-nerfies-primary transition-colors duration-200 hover:text-nerfies-primary-hover hover:underline">Michaël Gharbi</a>, and <a href="https://jonbarron.info/" class="text-nerfies-primary transition-colors duration-200 hover:text-nerfies-primary-hover hover:underline">Jon Barron</a></p>
+        
+        <p>Licensed under <a href="https://creativecommons.org/licenses/by-sa/4.0/" class="text-nerfies-primary transition-colors duration-200 hover:text-nerfies-primary-hover hover:underline">Creative Commons Attribution ShareAlike 4.0 International</a></p>
+        
+        <p class="text-xs">Feel free to use the source code of this website, we just ask that you link back to this page in your footer.</p>
       </div>
     </footer>
 
@@ -86,8 +98,8 @@ const { title = "Research Paper", description = "Academic research presentation"
                 try {
                   await navigator.clipboard.writeText(url);
                   
-                  // Visual feedback - highlight P in baby blue
-                  heading.style.setProperty('--anchor-color', '#60A5FA');
+                  // Visual feedback - highlight P in Nerfies blue
+                  heading.style.setProperty('--anchor-color', '#3273dc');
                   
                   setTimeout(() => {
                     heading.style.removeProperty('--anchor-content');
@@ -106,6 +118,12 @@ const { title = "Research Paper", description = "Academic research presentation"
       document.addEventListener('DOMContentLoaded', () => {
         generateHeadingIds();
         setupHeadingAnchors();
+
+        // Footer current year
+        const yearElement = document.getElementById('current-year');
+        if (yearElement) {
+          yearElement.textContent = String(new Date().getFullYear());
+        }
       });
     </script>
   </body>

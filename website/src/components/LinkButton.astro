@@ -11,9 +11,9 @@ const { href, type, class: className = "" } = Astro.props;
 
 const buttonStyles = {
   arxiv: "text-red-600 hover:text-red-700",
-  github: "text-gray-800 hover:text-gray-900", 
+  github: "text-nerfies-gray-800 hover:text-nerfies-gray-900", 
   huggingface: "text-yellow-600 hover:text-yellow-700",
-  website: "text-blue-600 hover:text-blue-700",
+  website: "text-nerfies-primary hover:text-nerfies-primary-hover",
   dataset: "text-purple-600 hover:text-purple-700"
 };
 
@@ -30,7 +30,7 @@ const iconNames = {
   href={href}
   target="_blank"
   rel="noopener noreferrer"
-  class={`inline-flex items-center gap-sm rounded-lg px-md py-sm font-medium transition-colors ${buttonStyles[type]} ${className}`}
+  class={`inline-flex items-center gap-sm rounded px-md py-sm font-medium transition-all duration-200 ${buttonStyles[type]} ${className}`}
 >
   <slot />
   <Icon name={iconNames[type]} size={20} />

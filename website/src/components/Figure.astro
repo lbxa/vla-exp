@@ -19,18 +19,18 @@ const {
 ---
 
 <figure class={`my-xl ${className}`}>
-  <div class="rounded-lg border border-gray-200 bg-gray-50 p-md">
+  <div class="rounded border border-nerfies-gray-200 bg-nerfies-gray-50 p-md shadow-nerfies">
     <img 
       src={src} 
       alt={alt}
       width={width}
       height={height}
-      class="h-auto w-full max-w-full rounded shadow-sm"
+      class="h-auto w-full max-w-full rounded"
       loading="lazy"
     />
   </div>
   {caption && (
-    <figcaption class="mt-3 text-center text-sm italic text-gray-600">
+    <figcaption class="mt-3 text-center text-sm italic text-nerfies-gray-600">
       {caption}
     </figcaption>
   )}
@@ -53,7 +53,7 @@ const {
       margin-right: -1rem;
     }
     
-    .bg-gray-50 {
+    .bg-nerfies-gray-50 {
       border-radius: 0;
       border-left: none;
       border-right: none;
