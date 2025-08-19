@@ -1,0 +1,18 @@
+---
+export interface Props {
+  href: string;
+  mobile?: boolean;
+  class?: string;
+}
+
+const { href, mobile = false, class: className = "" } = Astro.props;
+
+const baseClasses = "hover:text-blue-600 transition-colors";
+const desktopClasses = mobile ? "" : "";
+const mobileClasses = mobile ? "block py-sm" : "";
+const combinedClasses = `${baseClasses} ${mobile ? mobileClasses : desktopClasses} ${className}`;
+---
+
+<a href={href} class={combinedClasses}>
+  <slot />
+</a>

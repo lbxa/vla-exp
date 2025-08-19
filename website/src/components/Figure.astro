@@ -1,0 +1,62 @@
+---
+export interface Props {
+  src: string;
+  caption?: string;
+  alt: string;
+  width?: string;
+  height?: string;
+  class?: string;
+}
+
+const { 
+  src, 
+  caption, 
+  alt, 
+  width = "100%", 
+  height = "auto",
+  class: className = "" 
+} = Astro.props;
+---
+
+<figure class={`my-xl ${className}`}>
+  <div class="rounded-lg border border-gray-200 bg-gray-50 p-md">
+    <img 
+      src={src} 
+      alt={alt}
+      width={width}
+      height={height}
+      class="h-auto w-full max-w-full rounded shadow-sm"
+      loading="lazy"
+    />
+  </div>
+  {caption && (
+    <figcaption class="mt-3 text-center text-sm italic text-gray-600">
+      {caption}
+    </figcaption>
+  )}
+</figure>
+
+<style>
+  figure {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  img {
+    /* No hover effects */
+  }
+  
+  /* Responsive image container */
+  @media (max-width: 768px) {
+    figure {
+      margin-left: -1rem;
+      margin-right: -1rem;
+    }
+    
+    .bg-gray-50 {
+      border-radius: 0;
+      border-left: none;
+      border-right: none;
+    }
+  }
+</style>

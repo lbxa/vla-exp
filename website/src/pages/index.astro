@@ -1,0 +1,47 @@
+---
+import { getCollection } from 'astro:content';
+import ResearchLayout from '../layouts/ResearchLayout.astro';
+import SectionContainer from '../components/SectionContainer.astro';
+
+// Get all sections and sort by order
+const allSections = await getCollection('sections');
+const sortedSections = allSections.slice().sort((a, b) => a.data.order - b.data.order);
+
+// Map section filenames to IDs for navigation
+const SECTION_IDS = {
+  '01-hero': 'hero',
+  '02-abstract': 'abstract', 
+  '03-introduction': 'introduction',
+  '04-methodology': 'methodology',
+  '05-experiments': 'experiments',
+  '06-discussion': 'discussion',
+  '07-conclusion': 'conclusion',
+  '08-references': 'references'
+} as const;
+
+// Pre-render all sections
+const renderedSections = await Promise.all(
+  sortedSections.map(async (section) => {
+    const { Content } = await section.render();
+    const sectionId = SECTION_IDS[section.slug as keyof typeof SECTION_IDS] || section.slug;
+    return {
+      id: sectionId,
+      title: section.data.title,
+      Content,
+      isHero: sectionId === 'hero'
+    };
+  })
+);
+---
+
+<ResearchLayout title="Research Paper" description="Academic research presentation">
+  {renderedSections.map((section) => (
+    <SectionContainer 
+      id={section.id} 
+      title={section.title}
+      class={section.isHero ? 'pt-xl' : ''}
+    >
+      <section.Content />
+    </SectionContainer>
+  ))}
+</ResearchLayout>

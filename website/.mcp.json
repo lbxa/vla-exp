@@ -1,0 +1,16 @@
+{
+  "mcpServers": {
+    "context7": {
+      "type": "sse",
+      "url": "https://mcp.context7.com/sse"
+    },
+    "ios-simulator": {
+      "type": "stdio",
+      "command": "bunx",
+      "args": [
+        "ios-simulator-mcp"
+      ],
+      "env": {}
+    }
+  }
+}

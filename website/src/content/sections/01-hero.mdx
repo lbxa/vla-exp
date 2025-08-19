@@ -1,0 +1,49 @@
+---
+title: "Research Title"
+order: 1
+description: "Hero section with title, authors, and links"
+---
+
+import Figure from '../../components/Figure.astro';
+import VideoPlayer from '../../components/VideoPlayer.astro';
+import YouTubePlayer from '../../components/YouTubePlayer.astro';
+import LinkButton from '../../components/LinkButton.astro';
+
+<div class="text-center">
+
+# Your Research Paper Title Here
+
+**Authors:** Your Name¹, Co-Author Name², Another Author³
+
+**Affiliations:**  
+¹ Your University, Department  
+² Co-author Institution  
+³ Another Institution  
+
+**Contact:** your.email@university.edu
+
+<div class="flex flex-wrap justify-center gap-4 mt-6">
+  <LinkButton href="https://arxiv.org/abs/your-paper-id" type="arxiv">
+    arXiv
+  </LinkButton>
+  <LinkButton href="https://github.com/your-username/your-repo" type="github">
+    Code
+  </LinkButton>
+  <LinkButton href="https://huggingface.co/datasets/your-dataset" type="huggingface">
+    Dataset
+  </LinkButton>
+</div>
+
+</div>
+
+---
+
+## TL;DR
+
+A brief 2-3 sentence summary of your research contribution that can be easily copy-pasted from your Notion notes.
+
+<YouTubePlayer 
+  videoId="dQw4w9WgXcQ" 
+  caption="Demo video showcasing the main results of your research"
+  autoplay={false}
+/>

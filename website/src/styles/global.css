@@ -1,0 +1,103 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* reset.css */
+/* https://hankchizljaw.com/wrote/a-modern-css-reset/ */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html.dark .astro-code,
+html.dark .astro-code span {
+  color: var(--shiki-dark) !important;
+  background-color: var(--shiki-dark-bg) !important;
+  font-style: var(--shiki-dark-font-style) !important;
+  font-weight: var(--shiki-dark-font-weight) !important;
+  text-decoration: var(--shiki-dark-text-decoration) !important;
+}
+
+
+@layer base {
+  /* other classes */
+
+  /* Katex text color */
+  .prose .katex-display {
+    @apply text-gray-900;
+  }
+
+  /* ===== Code Blocks & Syntax Highlighting ===== */
+  /* other classes */
+}
+
+/* Heading anchor styles - global to ensure proper loading */
+.prose h1,
+.prose h2,
+.prose h3,
+.prose h4,
+.prose h5,
+.prose h6 {
+  position: relative;
+  scroll-margin-top: 6rem; /* Account for fixed header height (pt-20 = 5rem + 1rem buffer) */
+}
+
+/* Also apply scroll margin to sections for navigation */
+section[id] {
+  scroll-margin-top: 6rem;
+}
+
+.prose h1::after,
+.prose h2::after,
+.prose h3::after,
+.prose h4::after,
+.prose h5::after,
+.prose h6::after {
+  content: var(--anchor-content, '¶');
+  opacity: 0;
+  color: var(--anchor-color, #9CA3AF);
+  font-weight: normal;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  padding: 0 0.5rem;
+  border-radius: 0.25rem;
+  font-size: 0.875em;
+  line-height: 1;
+  margin-left: 0.5rem;
+}
+
+.prose h1:hover::after,
+.prose h2:hover::after,
+.prose h3:hover::after,
+.prose h4:hover::after,
+.prose h5:hover::after,
+.prose h6:hover::after {
+  opacity: 1;
+}
+
+.prose h1::after:hover,
+.prose h2::after:hover,
+.prose h3::after:hover,
+.prose h4::after:hover,
+.prose h5::after:hover,
+.prose h6::after:hover {
+  color: #3B82F6;
+  background-color: #F3F4F6;
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+  .prose h1::after,
+  .prose h2::after,
+  .prose h3::after,
+  .prose h4::after,
+  .prose h5::after,
+  .prose h6::after {
+    font-size: 0.75em;
+    padding: 0 0.25rem;
+    margin-left: 0.25rem;
+  }
+}

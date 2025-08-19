@@ -1,0 +1,64 @@
+---
+export interface Props {
+  caption?: string;
+  class?: string;
+}
+
+const { caption, class: className = "" } = Astro.props;
+---
+
+<figure class={`my-xl ${className}`}>
+  {caption && (
+    <figcaption class="mb-3 text-center text-sm italic text-gray-600">
+      {caption}
+    </figcaption>
+  )}
+  <div class="overflow-x-auto rounded-lg border border-gray-200 bg-white shadow-sm">
+    <table class="w-full border-collapse">
+      <slot />
+    </table>
+  </div>
+</figure>
+
+<style>
+  table {
+    font-variant-numeric: tabular-nums;
+  }
+  
+  :global(table th) {
+    @apply bg-gray-50 px-md py-3 text-left text-sm font-semibold text-gray-900 border-b border-gray-200;
+  }
+  
+  :global(table td) {
+    @apply px-md py-3 text-sm text-gray-700 border-b border-gray-100;
+  }
+  
+  :global(table tbody tr:hover) {
+    @apply bg-gray-50;
+  }
+  
+  :global(table tbody tr:last-child td) {
+    @apply border-b-0;
+  }
+  
+  /* Handle markdown table syntax */
+  :global(table thead tr) {
+    @apply border-b-2 border-gray-200;
+  }
+  
+  /* Numeric alignment for numbers */
+  :global(table td:has(strong)) {
+    @apply font-semibold text-gray-900;
+  }
+  
+  /* Responsive table */
+  @media (max-width: 768px) {
+    .overflow-x-auto {
+      margin-left: -1rem;
+      margin-right: -1rem;
+      border-radius: 0;
+      border-left: none;
+      border-right: none;
+    }
+  }
+</style>
