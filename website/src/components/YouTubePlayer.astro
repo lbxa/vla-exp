@@ -25,7 +25,7 @@ const muteParam = mute ? '1' : '0';
 const embedUrl = `https://www.youtube.com/embed/${videoId}?autoplay=${autoplayParam}&mute=${muteParam}&rel=0&modestbranding=1`;
 ---
 
-<figure class={`my-8 ${className}`}>
+<figure class={`mx-auto my-8 ${className}`}>
   <div class="rounded-lg border border-gray-200 bg-gray-50 p-4">
     <div class="relative aspect-video">
       <iframe 
@@ -62,8 +62,8 @@ const embedUrl = `https://www.youtube.com/embed/${videoId}?autoplay=${autoplayPa
   /* Responsive video container */
   @media (max-width: 768px) {
     figure {
-      margin-left: -1rem;
-      margin-right: -1rem;
+      margin-left: auto;
+      margin-right: auto;
     }
     
     .bg-gray-50 {

@@ -114,10 +114,31 @@ const { title = "Research Paper", description = "Academic research presentation"
         });
       }
 
-      // Initialize heading functionality
+      // Wrap all prose tables in scrollable containers
+      function wrapTables() {
+        const proseTables = document.querySelectorAll('.prose table');
+        
+        proseTables.forEach(table => {
+          // Skip if already wrapped
+          if (table.parentElement?.classList.contains('table-wrapper')) {
+            return;
+          }
+          
+          // Create wrapper div
+          const wrapper = document.createElement('div');
+          wrapper.className = 'table-wrapper';
+          
+          // Insert wrapper before table and move table into wrapper
+          table.parentNode?.insertBefore(wrapper, table);
+          wrapper.appendChild(table);
+        });
+      }
+
+      // Initialize all functionality
       document.addEventListener('DOMContentLoaded', () => {
         generateHeadingIds();
         setupHeadingAnchors();
+        wrapTables();
 
         // Footer current year
         const yearElement = document.getElementById('current-year');

@@ -60,5 +60,28 @@ const { caption, class: className = "" } = Astro.props;
       border-left: none;
       border-right: none;
     }
+    
+    /* Smaller text and padding on mobile */
+    :global(table th),
+    :global(table td) {
+      @apply px-2 py-2 text-xs;
+    }
+    
+    /* Stack table cells if too narrow */
+    @media (max-width: 480px) {
+      :global(table th),
+      :global(table td) {
+        @apply px-1 py-1 text-xs;
+        white-space: nowrap;
+      }
+    }
+  }
+
+  /* Tablet adjustments */
+  @media (max-width: 1024px) and (min-width: 769px) {
+    .overflow-x-auto {
+      margin-left: -0.5rem;
+      margin-right: -0.5rem;
+    }
   }
 </style>

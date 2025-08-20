@@ -14,6 +14,16 @@
   padding: 0;
 }
 
+/* Prevent horizontal overflow on mobile */
+html {
+  overflow-x: hidden;
+}
+
+body {
+  overflow-x: hidden;
+  max-width: 100vw;
+}
+
 html.dark .astro-code,
 html.dark .astro-code span {
   color: var(--shiki-dark) !important;
@@ -25,12 +35,18 @@ html.dark .astro-code span {
 
 
 @layer base {
+
   /* Set default fonts */
   html {
     font-family: 'Noto Sans', system-ui, sans-serif;
   }
 
-  h1, h2, h3, h4, h5, h6 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     font-family: 'Google Sans', system-ui, sans-serif;
   }
 
@@ -44,6 +60,7 @@ html.dark .astro-code span {
 }
 
 @layer components {
+
   /* Nerfies-inspired button styles */
   .btn-nerfies {
     @apply bg-nerfies-primary hover:bg-nerfies-primary-hover text-white px-6 py-3 rounded shadow-nerfies transition-all duration-200;
@@ -61,6 +78,11 @@ html.dark .astro-code span {
   .card-nerfies-lg {
     @apply bg-white rounded shadow-nerfies-lg p-8;
   }
+
+  /* Mobile-responsive table wrapper */
+  .table-wrapper {
+    @apply overflow-x-auto -mx-4 sm:mx-0;
+  }
 }
 
 /* Heading anchor styles - global to ensure proper loading */
@@ -71,7 +93,8 @@ html.dark .astro-code span {
 .prose h5,
 .prose h6 {
   position: relative;
-  scroll-margin-top: 6rem; /* Account for fixed header height (pt-20 = 5rem + 1rem buffer) */
+  scroll-margin-top: 6rem;
+  /* Account for fixed header height (pt-20 = 5rem + 1rem buffer) */
 }
 
 /* Also apply scroll margin to sections for navigation */
@@ -117,8 +140,21 @@ section[id] {
   background-color: #f5f5f5;
 }
 
+/* Table wrapper for horizontal scrolling */
+.table-wrapper {
+  overflow-x: auto;
+  margin: 0 -0.5rem;
+  padding: 0 0.5rem;
+}
+
+.table-wrapper table {
+  width: 100%;
+  margin: 0;
+}
+
 /* Mobile adjustments */
 @media (max-width: 768px) {
+
   .prose h1::after,
   .prose h2::after,
   .prose h3::after,
@@ -128,5 +164,119 @@ section[id] {
     font-size: 0.75em;
     padding: 0 0.25rem;
     margin-left: 0.25rem;
+  }
+
+  /* Improved line height for better mobile readability */
+  .prose h1 {
+    line-height: 1.3;
+  }
+
+  .prose h2 {
+    line-height: 1.35;
+  }
+
+  .prose h3 {
+    line-height: 1.4;
+  }
+
+  /* Mobile table wrapper extends to screen edges */
+  .table-wrapper {
+    margin: 0 -1.5rem;
+    padding: 0 1rem;
+  }
+
+  /* Mobile table font adjustments */
+  .table-wrapper table {
+    font-size: 0.875rem;
+  }
+
+  .table-wrapper table th,
+  .table-wrapper table td {
+    padding: 0.4rem 0.6rem;
+    font-size: 0.8rem;
+  }
+
+  /* Responsive code blocks */
+  .prose pre {
+    margin-left: 0;
+    margin-right: 0;
+    border-radius: 0;
+    overflow-x: auto;
+    padding: 1rem;
+  }
+
+  /* Responsive math equations */
+  .prose .katex-display {
+    overflow-x: auto;
+    overflow-y: hidden;
+    margin-left: -1rem;
+    margin-right: -1rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  /* Prevent horizontal overflow from any content */
+  .prose * {
+    max-width: 100%;
+    word-wrap: break-word;
+  }
+
+  /* Long words and URLs */
+  .prose a[href^="http"] {
+    word-break: break-all;
+  }
+
+  /* Responsive video embeds */
+  .prose iframe,
+  .prose video {
+    max-width: 100%;
+    height: auto;
+  }
+
+  /* Better mobile typography */
+  .prose {
+    font-size: 0.9rem;
+    line-height: 1.6;
+  }
+
+  .prose h1 {
+    font-size: 1.75rem;
+  }
+
+  .prose h2 {
+    font-size: 1.5rem;
+  }
+
+  .prose h3 {
+    font-size: 1.25rem;
+  }
+
+  /* Mobile-friendly list spacing */
+  .prose ul,
+  .prose ol {
+    padding-left: 1rem;
+  }
+
+  .prose li {
+    margin-bottom: 0.25rem;
+  }
+}
+
+/* Very small screens */
+@media (max-width: 480px) {
+  .prose {
+    font-size: 0.875rem;
+  }
+
+  .prose h1 {
+    font-size: 1.5rem;
+  }
+
+  .prose h2 {
+    font-size: 1.25rem;
+  }
+
+  .prose h3 {
+    font-size: 1.125rem;
   }
 }

@@ -10,7 +10,7 @@ const { id, title, class: className = "" } = Astro.props;
 
 <section 
   id={id} 
-  class={`mx-auto max-w-4xl px-lg py-12 ${className}`}
+  class={`mx-auto max-w-4xl px-md py-12 md:px-lg ${className}`}
 >
   <div class="prose prose-lg prose-gray max-w-none">
     <slot />
@@ -92,7 +92,7 @@ const { id, title, class: className = "" } = Astro.props;
   }
   
   .prose table {
-    @apply w-full border-collapse mb-4;
+    @apply w-full border-collapse mb-4 min-w-max;
   }
   
   .prose th, .prose td {
