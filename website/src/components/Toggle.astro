@@ -7,7 +7,7 @@ interface Props {
 const { summary, open = false } = Astro.props;
 ---
 
-<details class="toggle mb-md" open={open}>
+<details class="toggle mb-sm" open={open}>
   <summary class="flex cursor-pointer select-none items-start gap-sm">
     <svg
       viewBox="0 0 10 10"
@@ -23,7 +23,7 @@ const { summary, open = false } = Astro.props;
       <slot name="summary">{summary}</slot>
     </span>
   </summary>
-  <div class="toggle-content ml-[22px] mt-1 [&>p]:m-0">
+  <div class="toggle-content ml-[22px] mt-sm [&>p]:m-0">
     <slot />
   </div>
 </details>
