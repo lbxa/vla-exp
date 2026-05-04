@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  h2 {
+    @apply font-light;
+  }
+}
+
+@layer components {
+  .prose h3 {
+    @apply font-light;
+  }
+}
