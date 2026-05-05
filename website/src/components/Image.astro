@@ -12,6 +12,7 @@ interface Props {
   width?: number;
   height?: number;
   class?: string;
+  size?: "narrow" | "standard" | "wide";
   thumbhash?: string;
   loading?: "eager" | "lazy";
   decoding?: "async" | "auto" | "sync";
@@ -26,6 +27,7 @@ const {
   width,
   height,
   class: className,
+  size = "standard",
   thumbhash,
   loading,
   decoding,
@@ -50,6 +52,12 @@ const baseImageClass = "relative z-10 block h-auto w-full";
 const mainImageClass = placeholderDataUrl
   ? `${baseImageClass} opacity-0 transition-opacity duration-500`
   : baseImageClass;
+const mediaSizeClassByPreset = {
+  narrow: "md:max-w-md lg:max-w-lg",
+  standard: "md:max-w-lg lg:max-w-xl",
+  wide: "md:max-w-xl lg:max-w-2xl",
+} as const;
+const mediaShellClass = `relative mx-auto w-full overflow-hidden ${mediaSizeClassByPreset[size]}`;
 const mainImageOnLoad = placeholderDataUrl
   ? "this.classList.add('opacity-100');this.closest('[data-thumbhash-shell]')?.classList.add('is-loaded');"
   : undefined;
@@ -57,7 +65,7 @@ const mainImageOnLoad = placeholderDataUrl
 
 <figure class:list={["not-prose my-8", className]}>
   <div
-    class="relative overflow-hidden"
+    class={mediaShellClass}
     style={mediaShellStyle}
     id={placeholderShellId}
     data-thumbhash-shell

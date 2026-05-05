@@ -44,6 +44,7 @@ To measure adaptation under distribution shift directly, we compute transfer gap
 
 <Image
   src={transferGap}
+  size="standard"
   alt="Transfer gap values for Res-TD3, Res-SAC, and Res-PPO relative to the base policy on OOD evaluation trials."
   caption="Transfer gap ($\\Delta_{gen}$) for residual RL methods relative to the frozen base policy. All residual variants produce positive transfer, with Res-SAC showing the largest gain (+0.46). Error bars indicate 95% confidence intervals across tasks."
   thumbhash="74e7091d849b78f95f78776b87487877a97f8cfab7"
@@ -57,6 +58,7 @@ Aggregate metrics hide task-specific variation, so we compare the base policy ag
 
 <Image
   src={perTaskBreakdown}
+  size="wide"
   alt="Per-task comparison of base policy performance and best residual RL performance with relative improvement annotations."
   caption="Per-task breakdown between the base policy and the best residual RL method. Residual adaptation improves all seven tasks, with gains from 18% up to 156%. Error bars show 95% confidence intervals."
   thumbhash="b1e7091482b8d9977f76777f6682a97c9fbaf7"
@@ -70,6 +72,7 @@ We then compare Res-TD3, Res-SAC, and Res-PPO directly across both aggregate pro
 
 <Image
   src={residualRlComparison}
+  size="wide"
   alt="Task-wise comparison of Res-TD3, Res-SAC, and Res-PPO across mean progress and OOD generalization."
   caption="Residual RL algorithm comparison across tasks. Res-SAC is most consistently high-performing, especially on Bus Table variants and Erase Whiteboard. Error bars indicate 95% confidence intervals."
   thumbhash="32d7091c8488c9887d77877f7783887c8fc8f7"
@@ -83,6 +86,7 @@ To isolate the effect of residual formulation, we compare each pure RL family to
 
 <Image
   src={rlVsResidualRl}
+  size="standard"
   alt="Head-to-head OOD performance comparisons between TD3 vs Res-TD3, SAC vs Res-SAC, and PPO vs Res-PPO."
   caption="Pure RL versus residual RL on OOD generalization. Residual adaptation yields large gains across all algorithm families: +0.50 (TD3), +0.55 (SAC), and +0.52 (PPO). Error bars indicate 95% confidence intervals."
   thumbhash="b5e7091482998aad6f67676977769b6fbef9e6"
@@ -96,6 +100,7 @@ The following summary view emphasizes the practical impact of combining a frozen
 
 <Image
   src={heroSummary}
+  size="standard"
   alt="Summary bar chart comparing generalization performance of base policy, best pure RL method, and best residual RL method."
   caption="Summary of policy paradigms on OOD generalization. Base reaches 0.33, best pure RL (SAC) reaches 0.26, and Res-SAC reaches 0.78, corresponding to 134% improvement over base and 200% over pure SAC. Error bars indicate 95% confidence intervals."
   thumbhash="f5f70915824acbd88f6855488948779b2f5afba2b5"
@@ -109,6 +114,7 @@ We also analyze scaling behavior with task difficulty using Bus Table easy, medi
 
 <Image
   src={taskDifficulty}
+  size="standard"
   alt="Generalization performance across Bus Table easy, medium, and hard settings for base policy and Res-SAC."
   caption="Generalization as a function of Bus Table difficulty. The base policy degrades sharply with difficulty, while Res-SAC remains robust with high performance across all three levels. Shaded regions indicate 95% confidence bands."
   thumbhash="3b08020580b899a837a7898f9527a706ac80cf1af8"
