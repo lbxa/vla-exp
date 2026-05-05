@@ -11,27 +11,24 @@ const reportDate = "Nov 28th, 2025";
 const authors = ["Lucas Barbosa"];
 const mdxComponents = { Image, ImageTwoUp };
 
-/** Set when URLs exist; omit or leave empty for a muted, non-link pill. */
 const artifactUrls = {
-  paper: "",
+  paper: "/files/thesis.pdf",
   code: "https://github.com/lbxa/vla-rlx",
+  /** When set, Dataset becomes a link; otherwise a disabled pill. */
   dataset: "",
 } as const;
 
-type ArtifactEntry =
-  | { label: string; href: string }
-  | { label: string; href?: undefined; muted: true };
+const opensArtifactInNewTab = (href: string): boolean =>
+  href.startsWith("http") || href.toLowerCase().endsWith(".pdf");
+
+type ArtifactEntry = { label: string; href: string } | { label: string; muted: true };
 
 const artifactButtons: ArtifactEntry[] = [
-  ...(artifactUrls.paper
-    ? [{ label: "Paper", href: artifactUrls.paper } as const]
-    : [{ label: "Paper (coming soon)", muted: true } as const]),
-  ...(artifactUrls.code
-    ? [{ label: "Code", href: artifactUrls.code } as const]
-    : [{ label: "Code", muted: true } as const]),
+  { label: "Paper", href: artifactUrls.paper },
+  { label: "Code", href: artifactUrls.code },
   ...(artifactUrls.dataset
-    ? [{ label: "Dataset", href: artifactUrls.dataset } as const]
-    : [{ label: "Dataset (coming soon)", muted: true } as const]),
+    ? [{ label: "Dataset", href: artifactUrls.dataset }]
+    : [{ label: "Dataset (coming soon)", muted: true as const }]),
   { label: "BibTeX", href: "#citation" },
 ];
 
@@ -168,11 +165,11 @@ const tableOfContentsItems = renderedSections
               <div class="mt-10 flex flex-wrap items-center justify-center gap-3">
                 {
                   artifactButtons.map((entry) =>
-                    "href" in entry && entry.href ? (
+                    "href" in entry ? (
                       <a
                         href={entry.href}
-                        target={entry.href.startsWith("http") ? "_blank" : undefined}
-                        rel={entry.href.startsWith("http") ? "noopener noreferrer" : undefined}
+                        target={opensArtifactInNewTab(entry.href) ? "_blank" : undefined}
+                        rel={opensArtifactInNewTab(entry.href) ? "noopener noreferrer" : undefined}
                         class:list={[
                           artifactPillClass,
                           "hover:border-stone-950 hover:bg-stone-950 hover:text-white",
@@ -182,6 +179,7 @@ const tableOfContentsItems = renderedSections
                       </a>
                     ) : (
                       <span
+                        aria-disabled="true"
                         class:list={[artifactPillClass, "cursor-default border-stone-200 bg-stone-100 text-stone-500"]}
                       >
                         {entry.label}
