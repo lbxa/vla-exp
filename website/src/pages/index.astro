@@ -11,11 +11,10 @@ const reportDate = "Nov 28th, 2025";
 const authors = ["Lucas Barbosa"];
 const mdxComponents = { Image, ImageTwoUp };
 
-/** Set when URLs exist; omit or leave empty for a muted, non-link pill. Code uses label “Code coming soon” when absent. */
+/** Set when URLs exist; omit or leave empty for a muted, non-link pill. */
 const artifactUrls = {
   paper: "",
   code: "https://github.com/lbxa/vla-rlx",
-  videos: "",
   dataset: "",
 } as const;
 
@@ -26,13 +25,10 @@ type ArtifactEntry =
 const artifactButtons: ArtifactEntry[] = [
   ...(artifactUrls.paper
     ? [{ label: "Paper", href: artifactUrls.paper } as const]
-    : [{ label: "Paper", muted: true } as const]),
+    : [{ label: "Paper (coming soon)", muted: true } as const]),
   ...(artifactUrls.code
     ? [{ label: "Code", href: artifactUrls.code } as const]
     : [{ label: "Code", muted: true } as const]),
-  ...(artifactUrls.videos
-    ? [{ label: "Videos", href: artifactUrls.videos } as const]
-    : [{ label: "Videos", muted: true } as const]),
   ...(artifactUrls.dataset
     ? [{ label: "Dataset", href: artifactUrls.dataset } as const]
     : [{ label: "Dataset (coming soon)", muted: true } as const]),
